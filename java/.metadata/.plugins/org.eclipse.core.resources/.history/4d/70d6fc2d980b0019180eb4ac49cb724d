@@ -1,0 +1,24 @@
+package com.segludian.digitaltennis;
+
+import java.awt.event.KeyEvent;
+
+public class HumanController extends Controller {
+	
+	@Override
+	public boolean isHuman() {
+		return true;
+	}
+	
+	public void keyTyped(KeyEvent e) {
+		// do nothing.
+	}
+
+	public void keyReleased(KeyEvent e) {
+		// Respond to key released
+	}
+
+	public void keyPressed(KeyEvent e) {
+		// Respond to key pressed
+	}
+
+}

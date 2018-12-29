@@ -1,0 +1,19 @@
+/**
+ * 
+ */
+package com.segludian.digitaltennis;
+
+/**
+ * @author: seggiepants
+ *
+ */
+public class Main {
+
+	/**
+	 * @param args : Any arguments passed to the application.
+	 */
+	public static void main(String[] args) {
+		System.out.println("Hello World.");
+	}
+
+}

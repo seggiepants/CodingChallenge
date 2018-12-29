@@ -1,0 +1,18 @@
+package com.segludian.digitaltennis;
+
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class Help extends JPanel {
+
+	void setupGUI() {
+		JLabel title = new JLabel("Help");
+		Font titleFont = new Font("SansSerif", Font.BOLD, 18);
+		title.setFont(titleFont);
+		title.setForeground(Color.WHITE);
+		this.setColor(Color.BLACK);
+	}
+}

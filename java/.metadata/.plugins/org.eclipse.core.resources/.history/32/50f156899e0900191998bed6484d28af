@@ -1,0 +1,88 @@
+package com.segludian.digitaltennis;
+
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+
+public class Menu extends JPanel implements ActionListener {
+
+	/**
+	 * Added to make Eclipse happy
+	 */
+	private static final long serialVersionUID = -4969365043883597481L;
+	Main parent;
+	
+	public Menu(Main parent) {
+		this.parent = parent;
+		setupGUI();
+	}
+	
+	public void setupGUI() {
+		this.setBackground(Color.BLACK);
+		JLabel title = new JLabel("Digital Tennis");
+		Font titleFont = new Font("SansSerif", Font.BOLD, 36);
+		title.setFont(titleFont);
+		title.setForeground(Color.WHITE);
+		title.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		JButton playerVsComputer = new JButton("Player versus Computer");
+		playerVsComputer.setMnemonic(KeyEvent.VK_C);
+		playerVsComputer.setSelected(true);
+		playerVsComputer.setActionCommand("playerVsComputer");
+		playerVsComputer.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
+		JButton playerVsPlayer = new JButton("Player versus Player");
+		playerVsPlayer.setMnemonic(KeyEvent.VK_P);
+		playerVsPlayer.setActionCommand("playerVsPlayer");
+		playerVsPlayer.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
+		
+		JButton help = new JButton("Help");
+		help.setMnemonic(KeyEvent.VK_H);		
+		help.setActionCommand("help");
+		help.setAlignmentX(Component.CENTER_ALIGNMENT);
+		help.setMargin(new Insets(32, 32, 32, 32));
+		
+		JButton exit = new JButton("Exit");
+		exit.setMnemonic(KeyEvent.VK_X);		
+		exit.setActionCommand("exit");
+		exit.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
+		JPanel buttons = new JPanel();
+		buttons.setBackground(Color.BLACK);
+		BoxLayout buttonLayout = new BoxLayout(buttons, BoxLayout.Y_AXIS);
+		buttons.setLayout(buttonLayout);
+
+		buttons.add(playerVsComputer);		
+		buttons.add(playerVsPlayer);
+		buttons.add(help);
+		buttons.add(exit);
+	
+		this.setLayout(new GridLayout(2, 0));
+		this.add(title);
+		this.add(buttons);
+		
+		
+		playerVsComputer.addActionListener(this);
+		playerVsPlayer.addActionListener(this);
+		help.addActionListener(this);
+		exit.addActionListener(this);				
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		this.parent.menuEvent(e.getActionCommand());
+	}
+}

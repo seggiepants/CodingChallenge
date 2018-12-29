@@ -1,0 +1,144 @@
+package com.segludian.digitaltennis;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+
+public class Player {
+	// score: The player's current score.
+	// x: The X Coordinate of the top left of the player's racket.
+	// y: The Y Coordinate of the top left of the player's racket.
+	// width: The width of the player's racket.
+	// height: The height of the player's racket.
+	// Rectangle: Used for collision detection.
+	private int score;
+	private double x;
+	private double y;
+	private Rectangle rectangle;
+	private Controller controller;
+	private final static int width = 8;
+	private final static int height = 64;
+	private final Color racketColor = Color.white;
+	private final double racketSpeed = 100.0; // pixels per second.
+	/**
+	 * Constructor
+	 * @param controller: Controller class that updates the player's racket position.
+	 * @param x: default x-coordinate of the top left of the player's racket.
+	 * @param y: default y-coordinate of the top right of the player's racket.
+	 * @param width: width of the screen.
+	 * @param height: height of the screen.
+	 */
+	public Player(Controller controller) {
+		this.controller = controller;
+		this.rectangle = new Rectangle();
+		this.rectangle.width = Player.width;	// These don't change so don't bother updating them.
+		this.rectangle.height = Player.height;
+	}
+	
+	// Getters and Setters:
+	/**
+	 * 
+	 * @return: The current score for this player.
+	 */
+	public int getScore() {
+		return score;
+	}
+	
+	public Rectangle getRectangle() {
+		this.rectangle.x = (int) this.x; // Update with the current position.
+		this.rectangle.y = (int) this.y;
+		return this.rectangle;
+	}
+	
+	/**
+	 * 
+	 * @return: Paddle Width
+	 */
+	public static int getWidth() {
+		return Player.width;
+	}
+	
+	/**
+	 * 
+	 * @return: Paddle Height
+	 */
+	public static int getHeight() {
+		return Player.height;
+	}
+	
+	/**
+	 * Called when we start a new game.
+	 */
+	public void newGame(double x, double y)
+	{
+		this.x = x;
+		this.y = y;
+		this.score = 0;
+	}
+	
+	/**
+	 * Called when the player gets a point.
+	 */
+	public void addPoint()
+	{
+		this.score++;
+	}
+	
+	public void clipXY(double defaultX, int height) {
+		
+		this.x = defaultX;
+		
+		if (this.y < 0 || this.y + Player.height >= height) {
+			this.y = (height - Player.height) / 2.0;
+		}
+		
+	}
+	
+	/**
+	 * Draw the player's racket.
+	 *
+	 */
+	public void draw(Graphics2D g) {
+		g.setColor(this.racketColor);
+		g.fillRect((int) this.x,  (int)this.y,  Player.width,  Player.height);
+		
+	}
+	
+	/**
+	 * Update the player's racket position.
+	 * @param dt : Number of milliseconds elapsed for the previous frame.
+	 */
+	public void update(double dt) {
+		// Pass it off to the controller to handle.
+		this.controller.update(this,  dt);
+	}
+	
+	public boolean isHuman() {
+		return this.controller.isHuman();
+	}
+	
+	public double getSpeed() {
+		return this.racketSpeed;
+	}
+	
+	public double getX() {
+		return this.x;
+	}
+	
+	public void setX(double x) { 
+		this.x = x;
+	}
+	
+	public double getY() {
+		return this.y;
+	}
+	
+	public void setY(double y) {
+		this.y = y;
+	}
+	
+	public Controller getController() {
+		return this.controller;
+	}
+}

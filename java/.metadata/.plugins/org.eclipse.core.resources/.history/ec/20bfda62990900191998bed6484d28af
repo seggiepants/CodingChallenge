@@ -1,0 +1,67 @@
+package com.segludian.digitaltennis;
+
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class Menu extends JPanel implements ActionListener {
+
+	/**
+	 * Added to make Eclipse happy
+	 */
+	private static final long serialVersionUID = -4969365043883597481L;
+	Main parent;
+	
+	public Menu(Main parent) {
+		this.parent = parent;
+		setupGUI();
+	}
+	
+	public void setupGUI() {
+		JLabel title = new JLabel("Digital Tennis");
+		JButton playerVsComputer = new JButton("Player versus Computer");
+		playerVsComputer.setMnemonic(KeyEvent.VK_C);
+		playerVsComputer.setSelected(true);
+		playerVsComputer.setActionCommand("playerVsComputer");
+		
+		JButton playerVsPlayer = new JButton("Player versus Player");
+		playerVsPlayer.setMnemonic(KeyEvent.VK_P);
+		playerVsPlayer.setActionCommand("playerVsPlayer");
+		
+		
+		JButton help = new JButton("Help");
+		help.setMnemonic(KeyEvent.VK_H);		
+		help.setActionCommand("help");
+		
+		JButton exit = new JButton("Exit");
+		help.setMnemonic(KeyEvent.VK_X);		
+		help.setActionCommand("exit");
+
+		JPanel buttons = new JPanel();
+		buttons.setLayout(new GridLayout(4, 0));
+		buttons.add(playerVsComputer);
+		buttons.add(playerVsPlayer);
+		buttons.add(help);
+		buttons.add(exit);
+		
+		this.setLayout(new BorderLayout());
+		this.add(title, BorderLayout.NORTH);
+		this.add(buttons, BorderLayout.CENTER);
+		
+		playerVsComputer.addActionListener(this);
+		playerVsPlayer.addActionListener(this);
+		help.addActionListener(this);
+		exit.addActionListener(this);				
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		this.parent.menuEvent(e.getActionCommand());
+	}
+}

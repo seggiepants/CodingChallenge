@@ -1,0 +1,10 @@
+package com.segludian.digitaltennis;
+
+public class HumanController extends Controller {
+	
+	@Override
+	public boolean isHuman() {
+		return true;
+	}
+
+}

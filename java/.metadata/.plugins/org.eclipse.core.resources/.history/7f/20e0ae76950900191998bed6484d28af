@@ -1,0 +1,40 @@
+package com.segludian.digitaltennis;
+
+import java.awt.BorderLayout;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class Menu extends JPanel {
+
+	/**
+	 * Added to make Eclipse happy
+	 */
+	private static final long serialVersionUID = -4969365043883597481L;
+
+	public Menu(Main parent) {
+		
+		
+	}
+	
+	public void setupGUI(Main parent) {
+		JLabel title = new JLabel("Digital Tennis");
+		JButton playerVsComputer = new JButton("Player versus Computer");
+		JButton playerVsPlayer = new JButton("Player versus Player");
+		JButton help = new JButton("Help");
+		JButton exit = new JButton("Exit");
+		ButtonGroup buttons = new ButtonGroup();
+		buttons.add(playerVsComputer);
+		buttons.add(playerVsPlayer);
+		buttons.add(help);
+		buttons.add(exit);
+		
+		BorderLayout layout = new BorderLayout();
+		layout.addLayoutComponent(title, BorderLayout.NORTH);
+		layout.addLayoutComponent(buttons, BorderLayout.CENTER);
+		
+		
+	}
+}

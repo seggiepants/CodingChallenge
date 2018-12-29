@@ -1,0 +1,57 @@
+package com.segludian.digitaltennis;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
+public class Help extends JPanel implements ActionListener {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6666370060387630907L;
+	Main parent;
+	
+	Help(Main parent) {
+		this.parent = parent;
+	}
+
+	void setupGUI() {
+		JLabel title = new JLabel("Help");
+		Font titleFont = new Font("SansSerif", Font.BOLD, 18);
+		title.setFont(titleFont);
+		title.setForeground(Color.WHITE);
+		this.setBackground(Color.BLACK);
+		this.setLayout(new BorderLayout());
+		
+		this.add(title, BorderLayout.NORTH);
+		
+		JButton ok = new JButton("OK");
+		JPanel buttons = new JPanel();
+		FlowLayout buttonsLayout = new FlowLayout();
+		buttonsLayout.setAlignment(FlowLayout.RIGHT);
+		buttons.setLayout(buttonsLayout);
+		buttons.add(ok);
+		this.add(buttons, BorderLayout.SOUTH);
+		ok.addActionListener(this);
+		
+		JTextArea helpText = new JTextArea();
+		helpText.setText("This is a test\r\nThis is only a test");
+		JScrollPane helpTextScroll = new JScrollPane(helpText, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		this.add(helpTextScroll);
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		this.parent.menuEvent("mainMenu");
+	}
+
+}

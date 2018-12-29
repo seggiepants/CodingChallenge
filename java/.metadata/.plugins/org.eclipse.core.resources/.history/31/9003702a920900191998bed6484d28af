@@ -1,0 +1,43 @@
+/**
+ * 
+ */
+package com.segludian.digitaltennis;
+
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.JFrame;
+
+/**
+ * @author: seggiepants
+ *
+ */
+public class Main extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6954325115332256860L;
+
+	public Main() {
+		super("Digital Tennis");
+		this.setSize(640, 480);
+		this.setVisible(true);
+	}
+	
+	/**
+	 * @param args : Any arguments passed to the application.
+	 */
+	public static void main(String[] args) {
+		
+		Main main = new Main();
+		
+		System.out.println("Startup.");
+		main.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				main.dispose();
+			}
+		});
+		System.out.println("Shutdown.");
+	}
+
+}

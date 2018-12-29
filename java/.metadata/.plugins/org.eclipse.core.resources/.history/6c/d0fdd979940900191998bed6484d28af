@@ -1,0 +1,15 @@
+package com.segludian.digitaltennis;
+
+import javax.swing.JPanel;
+
+public class Menu extends JPanel {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4969365043883597481L;
+
+	public Menu(Main parent) {
+		
+	}
+}
