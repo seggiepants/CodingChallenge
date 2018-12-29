@@ -31,6 +31,7 @@ public class Main extends JFrame {
 				System.exit(0);;
 			}
 		});
+		setResizable(false);
 	}
 	
 	/** 

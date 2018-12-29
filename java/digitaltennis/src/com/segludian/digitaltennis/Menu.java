@@ -27,7 +27,7 @@ public class Menu extends JPanel implements ActionListener {
 	 */
 	public Menu(Main parent) {
 		this.parent = parent;
-		setupGUI();
+		setupGUI();		
 	}
 	
 	/**
